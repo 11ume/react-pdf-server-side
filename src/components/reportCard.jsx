@@ -1,8 +1,8 @@
 import React from 'react'
 import { Document, Page, Text, StyleSheet, View, Font, Image } from '@react-pdf/renderer'
-// import DMSansRegular from './fonts/DM_Sans/DMSans-Regular.ttf'
-// import DMSansBold from './fonts/DM_Sans/DMSans-Bold.ttf'
-// import DMSansMedium from './fonts/DM_Sans/DMSans-Medium.ttf'
+// import DMSansRegular from '../fonts/DM_Sans/DMSans-Regular.ttf'
+// import DMSansBold from '../fonts/DM_Sans/DMSans-Bold.ttf'
+// import DMSansMedium from '../fonts/DM_Sans/DMSans-Medium.ttf'
 
 Font.register({
     family: 'DM Sans', fonts: [
@@ -35,34 +35,83 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: 'white'
     },
+    header: {
+        width: '100%',
+        height: 200,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    body: {
+        flex: 1
+    },
+    organizationContainer: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    organizationLogo: {
+        minWidth: 120,
+        justifyContent: 'center',
+    },
+    organizationName: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    classroomContainer: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        marginHorizontal: 20,
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    teacherContainer: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    teacherLabel: {
+        flex: 1,
+    },
+    headerLabel: {
+        fontSize: 10,
+    },
+    headerName: {
+        fontSize: 10,
+        maxWidth: 160,
+        whiteSpace: 'pre-wrap',
+        color: '#565656',
+    },
+    logo: {
+        width: '50%',
+        height: 'auto',
+        alignSelf: 'center',
+    },
     table: {
         width: '100%',
         height: '100%',
-        maxHeight: 500,
-        flexDirection: 'column',
+        display: 'flex'
     },
-    organizationLogo: {
-        width: 80,
-        height: 80,
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: 20,
-    },
-    logo: {
-        width: '100%',
-        height: 'auto',
-    },
-    text: {
+    tableCellLabel: {
         fontSize: 10,
         color: '#2A205E',
         alignSelf: 'center',
         fontWeight: 600,
-        fontFamily: 'DM Sans'
+        fontFamily: 'DM Sans',
+        textAlign: 'center'
     },
     textRow: {
         fontSize: 10,
-        alignSelf: 'center',
-        fontFamily: 'DM Sans'
+        fontFamily: 'DM Sans',
+        alignSelf: 'center'
+    },
+    textRowSubject: {
+        fontSize: 10,
+        fontFamily: 'DM Sans',
     },
     tableHeader: {
         height: 40,
@@ -74,60 +123,126 @@ const styles = StyleSheet.create({
         border: '1px solid #DFDFDA',
         borderBottom: 0,
     },
-    tableCell: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center'
+    tableCellFirst: {
+        flex: 1,
+        justifyContent: 'center',
+        marginHorizontal: 20,
     },
-    tableRow: {
-        width: '100%',
-        height: 40,
-        borderBottom: '1px solid #DFDFDA',
-        justifyContent: 'center'
+    tableCell: {
+        flex: 0.3,
+        justifyContent: 'center',
+        marginHorizontal: 20,
     },
     tableRows: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        border: '1px solid #DFDFDA',
+        flex: 1,
         borderBottomRightRadius: 4,
         borderBottomLeftRadius: 4,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        border: '1px solid #DFDFDA',
+    },
+    tableRow: {
+        height: 40,
+        borderBottom: '1px solid #DFDFDA',
+        flexDirection: 'row'
+    },
+    rowSubject: {
+        flex: 1,
+        justifyContent: 'center',
+        marginHorizontal: 20,
+    },
+    row: {
+        flex: 0.3,
+        justifyContent: 'center',
+        marginHorizontal: 20,
     }
 })
 
-const ReportCard = () => (
+
+const ReportCard = ({ subjects }) => (
     <Document style={styles.document}>
         <Page size='A4' style={styles.page}>
-            <View style={styles.table}>
-                <View style={styles.organizationLogo}>
-                    <Image style={styles.logo} source={'https://images.squarespace-cdn.com/content/v1/53fcf6cae4b0799274cd1991/1501877067092-FCW8OXSXKCZGLR8674SV/DelCampo+School+Logo.png'} />
-                </View>
-                <View style={styles.tableHeader}>
-                    <View style={styles.tableCell} />
-                    <View style={styles.tableCell}>
-                        <Text style={styles.text}>Primer trimestre</Text>
+            <View style={styles.header}>
+                <View style={styles.organizationContainer}>
+                    <View style={styles.organizationLogo}>
+                        <Image style={styles.logo} source={'https://images.squarespace-cdn.com/content/v1/53fcf6cae4b0799274cd1991/1501877067092-FCW8OXSXKCZGLR8674SV/DelCampo+School+Logo.png'} />
                     </View>
-                    <View style={styles.tableCell}>
-                        <Text style={styles.text}>Segundo trimestre</Text>
-                    </View>
-                    <View style={styles.tableCell}>
-                        <Text style={styles.text}>Tercer trimestre</Text>
-                    </View>
-                    <View style={styles.tableCell}>
-                        <Text style={styles.text}>Final</Text>
+                    <View style={styles.organizationName}>
+                        <Text style={styles.headerLabel}>Escuela de Jornada Simple N° 12 de 12 "Provincia del Chaco</Text>
+                        <Text style={styles.headerName}>Nuevo colegio del San Sarasa</Text>
                     </View>
                 </View>
-                <View style={styles.tableRows}>
-                    <View style={styles.tableRow}>
-                        {/* <Text style={styles.textRow}>Matemática</Text> */}
+                <View style={styles.classroomContainer}>
+                    <View style={styles.teacherContainer}>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>Nombre</Text>
+                            <Text style={styles.headerName}>Macarena Gonzalez Cazón</Text>
+                        </View>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>DNI</Text>
+                            <Text style={styles.headerName}>49527895</Text>
+                        </View>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>Curso</Text>
+                            <Text style={styles.headerName}>5° B TM</Text>
+                        </View>
                     </View>
-                    <View style={styles.tableRow}>
-                        {/* <Text style={styles.textRow}>Prácticas del lenguaje</Text> */}
+                    <View style={styles.teacherContainer}>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>Nivel</Text>
+                            <Text style={styles.headerName}>Primario</Text>
+                        </View>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>Ciclo lectivo</Text>
+                            <Text style={styles.headerName}>2021</Text>
+                        </View>
+                        <View style={styles.teacherLabel}>
+                            <Text style={styles.headerLabel}>N° de órden</Text>
+                            <Text style={styles.headerName}>5</Text>
+                        </View>
                     </View>
-                    <View style={styles.tableRow}>
-                        {/* <Text style={styles.textRow}>Ciencias sociales</Text> */}
+                </View>
+            </View>
+            <View style={styles.body}>
+                <View style={styles.table}>
+                    <View style={styles.tableHeader}>
+                        <View style={styles.tableCellFirst} />
+                        <View style={styles.tableCell}>
+                            <Text style={styles.tableCellLabel}>Primer trimestre</Text>
+                        </View>
+                        <View style={styles.tableCell}>
+                            <Text style={styles.tableCellLabel}>Segundo trimestre</Text>
+                        </View>
+                        <View style={styles.tableCell}>
+                            <Text style={styles.tableCellLabel}>Tercer trimestre</Text>
+                        </View>
+                        <View style={styles.tableCell}>
+                            <Text style={styles.tableCellLabel}>Final</Text>
+                        </View>
+                    </View>
+                    <View style={styles.tableRows}>
+                        {subjects.map(({ name, periods }, key) => {
+                            const [first, second, third] = periods
+                            const total = Math.round((first + second + third) / 3)
+                            return (
+                                <View style={styles.tableRow} key={key}>
+                                    <View style={styles.rowSubject}>
+                                        <Text style={styles.textRowSubject}>{name}</Text>
+                                    </View>
+                                    <View style={styles.row}>
+                                        <Text style={styles.textRow}>{first}</Text>
+                                    </View>
+                                    <View style={styles.row}>
+                                        <Text style={styles.textRow}>{second}</Text>
+                                    </View>
+                                    <View style={styles.row}>
+                                        <Text style={styles.textRow}>{third}</Text>
+                                    </View>
+                                    <View style={styles.row}>
+                                        <Text style={styles.textRow}>{total}</Text>
+                                    </View>
+                                </View>
+                            )
+                        })}
                     </View>
                 </View>
             </View>
