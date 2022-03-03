@@ -1,27 +1,27 @@
 import React from 'react'
 import { Document, Page, Text, StyleSheet, View, Font, Image } from '@react-pdf/renderer'
-// import DMSansRegular from '../fonts/DM_Sans/DMSans-Regular.ttf'
-// import DMSansBold from '../fonts/DM_Sans/DMSans-Bold.ttf'
-// import DMSansMedium from '../fonts/DM_Sans/DMSans-Medium.ttf'
-
-Font.register({
-    family: 'DM Sans', fonts: [
-        { src: 'http://localhost:4000/DM_Sans/DMSans-Regular.ttf', fontWeight: 600 },
-    ]
-})
+import DMSansRegular from '../fonts/DM_Sans/DMSans-Regular.ttf'
+import DMSansBold from '../fonts/DM_Sans/DMSans-Bold.ttf'
+import DMSansMedium from '../fonts/DM_Sans/DMSans-Medium.ttf'
 
 // Font.register({
-//     family: 'DM Sans', fonts: [{
-//         format: 'truetype',
-//         src: DMSansRegular
-//     }, {
-//         format: 'truetype',
-//         src: DMSansBold
-//     }, {
-//         format: 'truetype',
-//         src: DMSansMedium
-//     }]
+//     family: 'DM Sans', fonts: [
+//         { src: 'http://localhost:4000/DM_Sans/DMSans-Regular.ttf', fontWeight: 600 },
+//     ]
 // })
+
+Font.register({
+    family: 'DM Sans', fonts: [{
+        format: 'truetype',
+        src: DMSansRegular
+    }, {
+        format: 'truetype',
+        src: DMSansBold
+    }, {
+        format: 'truetype',
+        src: DMSansMedium
+    }]
+})
 
 const styles = StyleSheet.create({
     document: {
@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1
+    },
+    footer: {
+        flex: 0.3,
     },
     organizationContainer: {
         width: '100%',
@@ -94,7 +97,9 @@ const styles = StyleSheet.create({
     table: {
         width: '100%',
         height: '100%',
-        display: 'flex'
+        display: 'flex',
+        borderRadius: 4,
+        border: '1px solid #DFDFDA',
     },
     tableCellLabel: {
         fontSize: 10,
@@ -118,10 +123,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         backgroundColor: 'rgb(248, 248, 246)',
-        borderTopRightRadius: 4,
-        borderTopLeftRadius: 4,
-        border: '1px solid #DFDFDA',
-        borderBottom: 0,
+        borderBottom: '1px solid #DFDFDA',
     },
     tableCellFirst: {
         flex: 1,
@@ -135,10 +137,7 @@ const styles = StyleSheet.create({
     },
     tableRows: {
         flex: 1,
-        borderBottomRightRadius: 4,
-        borderBottomLeftRadius: 4,
         flexDirection: 'column',
-        border: '1px solid #DFDFDA',
     },
     tableRow: {
         height: 40,
@@ -154,6 +153,31 @@ const styles = StyleSheet.create({
         flex: 0.3,
         justifyContent: 'center',
         marginHorizontal: 20,
+    },
+    signatureContainer: {
+        flexDirection: 'row',
+        marginTop: 30
+    },
+    signatureWrapper: {
+        flex: 1,
+        justifyContent: 'center',
+        marginRight: 20,
+        marginLeft: 20,
+    },
+    signatureLine: {
+        minHeight: 1,
+        backgroundColor: '#333'
+    },
+    signatureLabel: {
+        fontSize: 10,
+        alignSelf: 'center',
+        paddingTop: 20
+    },
+    signatureImage: {
+        width: '80%',
+        minHeight: 50,
+        height: 'auto',
+        margin: 'auto',
     }
 })
 
@@ -243,6 +267,36 @@ const ReportCard = ({ subjects }) => (
                                 </View>
                             )
                         })}
+                    </View>
+                </View>
+            </View>
+            <View style={styles.footer}>
+                <View style={styles.signatureContainer}>
+                    <View style={styles.signatureWrapper}>
+                        <View style={styles.signatureImage}>
+                            <Image source={'https://upload.wikimedia.org/wikipedia/commons/a/ac/Chris_Hemsworth_Signature.png'}></Image>
+                        </View>
+                        <View style={styles.signatureLine} />
+                        <View style={styles.signatureLabel}>
+                            <Text>Cristina Gomez - Directora</Text>
+                        </View>
+                    </View>
+                    <View style={styles.signatureWrapper}>
+                        <View style={styles.signatureImage}>
+                        </View>
+                        <View style={styles.signatureLine} />
+                        <View style={styles.signatureLabel}>
+                            <Text>Firma padre / madre / tutor</Text>
+                        </View>
+                    </View>
+                    <View style={styles.signatureWrapper}>
+                        <View style={styles.signatureImage}>
+
+                        </View>
+                        <View style={styles.signatureLine} />
+                        <View style={styles.signatureLabel}>
+                            <Text>Firma del estudiante</Text>
+                        </View>
                     </View>
                 </View>
             </View>
