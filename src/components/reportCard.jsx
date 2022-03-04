@@ -37,33 +37,48 @@ const styles = StyleSheet.create({
     },
     header: {
         width: '100%',
-        height: 200,
+        height: 205,
         display: 'flex',
         flexDirection: 'column',
     },
     body: {
-        flex: 1
+        flex: 1,
     },
     footer: {
         flex: 0.3,
     },
     organizationContainer: {
         width: '100%',
-        height: '100%',
+        minHeight: 100,
         display: 'flex',
         flexDirection: 'row',
     },
-    organizationLogo: {
-        minWidth: 120,
+    logoContainer: {
+        width: 100,
+        height: 100,
         justifyContent: 'center',
+    },
+    logo: {
+        width: '100%',
+        height: 'auto',
+        alignSelf: 'center',
     },
     organizationName: {
         width: '100%',
-        height: '100%',
         display: 'flex',
         justifyContent: 'center',
+        paddingHorizontal: 10
     },
-    classroomContainer: {
+    organizationLabel: {
+        fontSize: 12,
+    },
+    organizationContent: {
+        fontSize: 11,
+        maxWidth: 160,
+        whiteSpace: 'pre-wrap',
+        fontWeight: 600
+    },
+    informationContainer: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -71,34 +86,35 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
     },
-    teacherContainer: {
+    classroomContainer: {
         width: '100%',
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
     },
-    teacherLabel: {
+    classroomLabelContainer: {
+        flex: 0.5,
+        flexDirection: 'row',
+    },
+    classroomLabelContainerFirst: {
         flex: 1,
+        flexDirection: 'row',
     },
     headerLabel: {
-        fontSize: 10,
+        fontSize: 11,
     },
-    headerName: {
-        fontSize: 10,
+    headerContent: {
+        fontSize: 11,
         maxWidth: 160,
         whiteSpace: 'pre-wrap',
-        color: '#565656',
-    },
-    logo: {
-        width: '50%',
-        height: 'auto',
-        alignSelf: 'center',
+        color: '#6D7878',
+        marginLeft: 5,
+        fontWeight: 600
     },
     table: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        borderRadius: 4,
+        flex: 1,
+        flexBasis: '10em',
+        borderRadius: 6,
         border: '1px solid #DFDFDA',
     },
     tableCellLabel: {
@@ -109,20 +125,20 @@ const styles = StyleSheet.create({
         fontFamily: 'DM Sans',
         textAlign: 'center'
     },
-    textRow: {
+    rowLabel: {
         fontSize: 10,
         fontFamily: 'DM Sans',
         alignSelf: 'center'
     },
-    textRowSubject: {
+    labelRowSubjectName: {
         fontSize: 10,
         fontFamily: 'DM Sans',
     },
-    tableHeader: {
+    tableCells: {
         height: 40,
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'rgb(248, 248, 246)',
+        backgroundColor: '#e3e3e3',
         borderBottom: '1px solid #DFDFDA',
     },
     tableCellFirst: {
@@ -140,7 +156,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     tableRow: {
-        height: 40,
+        flex: 1,
         borderBottom: '1px solid #DFDFDA',
         flexDirection: 'row'
     },
@@ -161,12 +177,11 @@ const styles = StyleSheet.create({
     signatureWrapper: {
         flex: 1,
         justifyContent: 'center',
-        marginRight: 20,
-        marginLeft: 20,
+        marginHorizontal: 20
     },
     signatureLine: {
         minHeight: 1,
-        backgroundColor: '#333'
+        backgroundColor: '#6D7878'
     },
     signatureLabel: {
         fontSize: 10,
@@ -181,127 +196,160 @@ const styles = StyleSheet.create({
     }
 })
 
-
-const ReportCard = ({ subjects }) => (
-    <Document style={styles.document}>
-        <Page size='A4' style={styles.page}>
-            <View style={styles.header}>
-                <View style={styles.organizationContainer}>
-                    <View style={styles.organizationLogo}>
-                        <Image style={styles.logo} source={'https://images.squarespace-cdn.com/content/v1/53fcf6cae4b0799274cd1991/1501877067092-FCW8OXSXKCZGLR8674SV/DelCampo+School+Logo.png'} />
+const ReportCardHeader = () => {
+    return (
+        <View style={styles.header}>
+            <View style={styles.organizationContainer}>
+                <View style={styles.logoContainer}>
+                    <Image style={styles.logo} source={'https://media.istockphoto.com/vectors/education-symbol-design-template-pencil-and-book-icon-stylized-vector-id1171617683?k=20&m=1171617683&s=612x612&w=0&h=E2wEAH0mQ2j-MT_i0sHj_6OUWoJKlD-3Pt7_Y8WhzD0='} />
+                </View>
+                <View style={styles.organizationName}>
+                    <Text style={styles.organizationLabel}>Escuela de Jornada Simple N° 12 de 12 "Provincia del Chaco"</Text>
+                    <Text style={styles.organizationContent}>Nuevo colegio del San Sarasa</Text>
+                </View>
+            </View>
+            <View style={styles.informationContainer}>
+                <View style={styles.classroomContainer}>
+                    <View style={styles.classroomLabelContainerFirst}>
+                        <Text style={styles.headerLabel}>Nombre:</Text>
+                        <Text style={styles.headerContent}>Macarena Gonzalez Cazón Macarrón Suprabond</Text>
                     </View>
-                    <View style={styles.organizationName}>
-                        <Text style={styles.headerLabel}>Escuela de Jornada Simple N° 12 de 12 "Provincia del Chaco</Text>
-                        <Text style={styles.headerName}>Nuevo colegio del San Sarasa</Text>
+                    <View style={styles.classroomLabelContainer}>
+                        <Text style={styles.headerLabel}>DNI:</Text>
+                        <Text style={styles.headerContent}>49527895</Text>
+                    </View>
+                    <View style={styles.classroomLabelContainer}>
+                        <Text style={styles.headerLabel}>Curso:</Text>
+                        <Text style={styles.headerContent}>5° B TM</Text>
                     </View>
                 </View>
                 <View style={styles.classroomContainer}>
-                    <View style={styles.teacherContainer}>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>Nombre</Text>
-                            <Text style={styles.headerName}>Macarena Gonzalez Cazón</Text>
-                        </View>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>DNI</Text>
-                            <Text style={styles.headerName}>49527895</Text>
-                        </View>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>Curso</Text>
-                            <Text style={styles.headerName}>5° B TM</Text>
-                        </View>
+                    <View style={styles.classroomLabelContainerFirst}>
+                        <Text style={styles.headerLabel}>Nivel:</Text>
+                        <Text style={styles.headerContent}>Primario</Text>
                     </View>
-                    <View style={styles.teacherContainer}>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>Nivel</Text>
-                            <Text style={styles.headerName}>Primario</Text>
-                        </View>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>Ciclo lectivo</Text>
-                            <Text style={styles.headerName}>2021</Text>
-                        </View>
-                        <View style={styles.teacherLabel}>
-                            <Text style={styles.headerLabel}>N° de órden</Text>
-                            <Text style={styles.headerName}>5</Text>
-                        </View>
+                    <View style={styles.classroomLabelContainer}>
+                        <Text style={styles.headerLabel}>Ciclo lectivo:</Text>
+                        <Text style={styles.headerContent}>2021</Text>
+                    </View>
+                    <View style={styles.classroomLabelContainer}>
+                        <Text style={styles.headerLabel}>N° de órden:</Text>
+                        <Text style={styles.headerContent}>5</Text>
                     </View>
                 </View>
             </View>
-            <View style={styles.body}>
-                <View style={styles.table}>
-                    <View style={styles.tableHeader}>
-                        <View style={styles.tableCellFirst} />
-                        <View style={styles.tableCell}>
-                            <Text style={styles.tableCellLabel}>Primer trimestre</Text>
-                        </View>
-                        <View style={styles.tableCell}>
-                            <Text style={styles.tableCellLabel}>Segundo trimestre</Text>
-                        </View>
-                        <View style={styles.tableCell}>
-                            <Text style={styles.tableCellLabel}>Tercer trimestre</Text>
-                        </View>
-                        <View style={styles.tableCell}>
-                            <Text style={styles.tableCellLabel}>Final</Text>
-                        </View>
-                    </View>
-                    <View style={styles.tableRows}>
-                        {subjects.map(({ name, periods }, key) => {
-                            const [first, second, third] = periods
-                            const total = Math.round((first + second + third) / 3)
-                            return (
-                                <View style={styles.tableRow} key={key}>
-                                    <View style={styles.rowSubject}>
-                                        <Text style={styles.textRowSubject}>{name}</Text>
-                                    </View>
-                                    <View style={styles.row}>
-                                        <Text style={styles.textRow}>{first}</Text>
-                                    </View>
-                                    <View style={styles.row}>
-                                        <Text style={styles.textRow}>{second}</Text>
-                                    </View>
-                                    <View style={styles.row}>
-                                        <Text style={styles.textRow}>{third}</Text>
-                                    </View>
-                                    <View style={styles.row}>
-                                        <Text style={styles.textRow}>{total}</Text>
-                                    </View>
-                                </View>
-                            )
-                        })}
-                    </View>
-                </View>
-            </View>
-            <View style={styles.footer}>
-                <View style={styles.signatureContainer}>
-                    <View style={styles.signatureWrapper}>
-                        <View style={styles.signatureImage}>
-                            <Image source={'https://upload.wikimedia.org/wikipedia/commons/a/ac/Chris_Hemsworth_Signature.png'}></Image>
-                        </View>
-                        <View style={styles.signatureLine} />
-                        <View style={styles.signatureLabel}>
-                            <Text>Cristina Gomez - Directora</Text>
-                        </View>
-                    </View>
-                    <View style={styles.signatureWrapper}>
-                        <View style={styles.signatureImage}>
-                        </View>
-                        <View style={styles.signatureLine} />
-                        <View style={styles.signatureLabel}>
-                            <Text>Firma padre / madre / tutor</Text>
-                        </View>
-                    </View>
-                    <View style={styles.signatureWrapper}>
-                        <View style={styles.signatureImage}>
+        </View>
+    )
+}
 
-                        </View>
-                        <View style={styles.signatureLine} />
-                        <View style={styles.signatureLabel}>
-                            <Text>Firma del estudiante</Text>
-                        </View>
+const ReportCardFooter = () => {
+    return (
+        <View style={styles.footer}>
+            <View style={styles.signatureContainer}>
+                <View style={styles.signatureWrapper}>
+                    <View style={styles.signatureImage}>
+                        <Image source={'https://upload.wikimedia.org/wikipedia/commons/a/ac/Chris_Hemsworth_Signature.png'}></Image>
+                    </View>
+                    <View style={styles.signatureLine} />
+                    <View style={styles.signatureLabel}>
+                        <Text>Cristina Gomez - Directora</Text>
+                    </View>
+                </View>
+                <View style={styles.signatureWrapper}>
+                    <View style={styles.signatureImage}>
+                    </View>
+                    <View style={styles.signatureLine} />
+                    <View style={styles.signatureLabel}>
+                        <Text>Firma padre / madre / tutor</Text>
+                    </View>
+                </View>
+                <View style={styles.signatureWrapper}>
+                    <View style={styles.signatureImage}>
+                    </View>
+                    <View style={styles.signatureLine} />
+                    <View style={styles.signatureLabel}>
+                        <Text>Firma del estudiante</Text>
                     </View>
                 </View>
             </View>
-        </Page>
-    </Document>
-)
+        </View>
+    )
+}
+
+const ReportCardBody = ({ subjects }) => {
+    return (
+        <View style={styles.body}>
+            <View style={[styles.table, { maxHeight: 50 * subjects.length }]}>
+                <View style={styles.tableCells}>
+                    <View style={styles.tableCellFirst} />
+                    <View style={styles.tableCell}>
+                        <Text style={styles.tableCellLabel}>Primer trimestre</Text>
+                    </View>
+                    <View style={styles.tableCell}>
+                        <Text style={styles.tableCellLabel}>Segundo trimestre</Text>
+                    </View>
+                    <View style={styles.tableCell}>
+                        <Text style={styles.tableCellLabel}>Tercer trimestre</Text>
+                    </View>
+                    <View style={styles.tableCell}>
+                        <Text style={styles.tableCellLabel}>Final</Text>
+                    </View>
+                </View>
+                <View style={styles.tableRows}>
+                    {subjects.map(({ name, periods }, key) => {
+                        const [first, second, third] = periods
+                        const total = Math.round((first + second + third) / 3)
+                        return (
+                            <View style={styles.tableRow} key={key}>
+                                <View style={styles.rowSubject}>
+                                    <Text style={styles.labelRowSubjectName}>{name}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowLabel}>{first}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowLabel}>{second}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowLabel}>{third}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowLabel}>{total}</Text>
+                                </View>
+                            </View>
+                        )
+                    })}
+                </View>
+            </View>
+        </View>
+    )
+}
+
+const ReportCard = ({ subjects }) => {
+    const subjectsLimit = subjects.length <= 9
+    return (
+        <Document style={styles.document}>
+            {subjectsLimit
+                ? (
+                    <Page size='A4' style={styles.page}>
+                        <ReportCardHeader />
+                        <ReportCardBody subjects={subjects} />
+                        <ReportCardFooter />
+                    </Page>
+                ) : (
+                    <>
+                        <Page size='A4' style={styles.page}>
+                            <ReportCardHeader />
+                            <ReportCardBody subjects={subjects.slice(0, 9)} />
+                        </Page>
+                        <Page size='A4' style={styles.page}>
+                            <ReportCardBody subjects={subjects.slice(9, subjects.length)} />
+                            <ReportCardFooter />
+                        </Page>
+                    </>
+                )}
+        </Document>
+    )
+}
 
 export default ReportCard

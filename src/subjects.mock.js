@@ -31,4 +31,16 @@ export const subjects = [{
 {
     name: 'Pensamiento de diseño',
     periods: [10, 10, 10]
+},
+{
+    name: 'Pensamiento crítico',
+    periods: [6, 7, 8]
+},
+{
+    name: 'Pensamiento crítico',
+    periods: [8, 10, 7]
+},
+{
+    name: 'Educación financiera',
+    periods: [8, 6, 7]
 }]
