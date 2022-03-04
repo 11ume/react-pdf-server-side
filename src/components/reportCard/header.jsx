@@ -25,8 +25,8 @@ const ReportCardHeader = ({
                         <Text style={styles.headerContent}>{teacher.name}</Text>
                     </View>
                     <View style={styles.classroomLabelContainer}>
-                        <Text style={styles.headerLabel}>DNI:</Text>
-                        <Text style={styles.headerContent}>{teacher.identification}</Text>
+                        <Text style={styles.headerLabel}>{`${teacher.identification.type}`}:</Text>
+                        <Text style={styles.headerContent}>{teacher.identification.number}</Text>
                     </View>
                     <View style={styles.classroomLabelContainer}>
                         <Text style={styles.headerLabel}>Curso:</Text>

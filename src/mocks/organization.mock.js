@@ -6,7 +6,11 @@ export const organization = {
 
 export const teacher = {
     name: 'Macarena Gonzalez Cazón Macarrón Suprabond',
-    identification: '49527895'
+    genders: 'female',
+    identification: {
+        type: 'DNI',
+        number: '49527895'
+    }
 }
 
 export const student = {

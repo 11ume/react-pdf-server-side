@@ -1,0 +1,25 @@
+{
+    "generic": {
+        "name": "Nombre",
+        "level": "Nivel",
+        "academicYear": "Ciclo lectivo",
+        "orderNumber": "N° de órden",
+        "notes": "Notas",
+        "signature": "Firma",
+        "father": "padre",
+        "mother": "madre",
+        "student": "Estudiante",
+        "tutor": "tutor"
+    },
+    "teacher": {
+        "role": "Director",
+        "role_male": "Director",
+        "role_female": "Directora"
+    },
+    "periods": {
+        "first": "Primer trimestre",
+        "second": "Segundo trimestre",
+        "third": "Tercer trimestre",
+        "end": "Final"
+    }
+}
