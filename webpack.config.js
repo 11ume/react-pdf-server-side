@@ -4,7 +4,7 @@ const webpack = require("webpack")
 module.exports = {
     mode: 'development',
     devtool: 'eval-cheap-source-map',
-    entry: './src/test/index.jsx',
+    entry: './src/development/index.jsx',
     output: {
         filename: './public/js/bundle.js',
     },

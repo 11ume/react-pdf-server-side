@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node src/service.js",
-    "dev": "webpack-dev-server --open --hot",
-    "build": "babel src/service.js --out-file dist/service.js"
+    "start": "cross-env NODE_ENV=production babel-node src/service.js",
+    "start:dev": "cross-env NODE_ENV=development babel-node src/service.js",
+    "start:optimized": "cross-env NODE_ENV=production node dist/service.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "cleanup": "rm -rf dist",
+    "build": "npm run cleanup && babel src -D -d dist"
   },
   "dependencies": {
     "@babel/core": "^7.17.4",
@@ -15,7 +18,10 @@
     "@babel/preset-react": "^7.16.7",
     "@react-pdf/renderer": "^2.1.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "http-errors": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

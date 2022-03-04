@@ -4,9 +4,9 @@ import { Text, View } from '@react-pdf/renderer'
 import { styles } from './styles'
 
 // TODO add i18n
-const ReportCardBody = ({ subjects }) => {
+const ReportCardBody = ({ className = '', subjects }) => {
     return (
-        <View style={styles.body}>
+        <View style={[styles.body, className]}>
             <Text style={styles.tableTitle}>Notas</Text>
             <View style={[styles.table, { maxHeight: 40 * subjects.length }]}>
                 <View style={styles.tableHeader}>
