@@ -3,9 +3,9 @@ import { Text, View, Image } from '@react-pdf/renderer'
 import { styles } from './styles'
 
 // TODO add i18n
-const ReportCardFooter = ({ signatures }) => {
+const ReportCardFooter = ({ className = '', signatures }) => {
     return (
-        <View style={styles.footer}>
+        <View style={[styles.footer, className]}>
             <View style={styles.signatureContainer}>
                 <View style={styles.signatureWrapper}>
                     <View style={styles.signatureImage}>

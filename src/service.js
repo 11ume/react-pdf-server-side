@@ -1,10 +1,12 @@
 import path from 'node:path'
 import express from 'express'
 import cors from 'cors'
-import router from './router'
+import reportCardRouter from './api/reportCard.router'
+import { service, env } from './config'
 
 const app = express()
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'fonts')))
-app.use(router)
-app.listen(4000, () => console.log('service listen in port: ' + 4000)) 
+app.use(express.static(path.join(__dirname, 'static')))
+app.use('api/v1', reportCardRouter)
+app.listen(service.http.port, () => console.log('service port:' + service.http.port))
+console.log('service env:', env)

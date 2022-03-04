@@ -4,11 +4,12 @@ import { styles } from './styles'
 
 // TODO add i18n
 const ReportCardHeader = ({
+    className = '',
     teacher,
     student,
     organization }) => {
     return (
-        <View style={styles.header}>
+        <View style={[styles.header, className]}>
             <View style={styles.organizationContainer}>
                 <View style={styles.logoContainer}>
                     <Image style={styles.logo} source={organization.src} />
