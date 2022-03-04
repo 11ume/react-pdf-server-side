@@ -53,6 +53,7 @@ const ReportCard = ({ teacher, student, organization, signatures, subjects, limi
                                 organization={organization}
                             />
                             <ReportCardBody subjects={subjects.slice(0, limit)} />
+                            <ReportCardFooter signatures={signatures} />
                         </Page>
                         <Page size={pageSize} style={styles.page}>
                             <ReportCardBody className={{ marginTop: 40 }} subjects={subjects.slice(limit, subjects.length)} />
