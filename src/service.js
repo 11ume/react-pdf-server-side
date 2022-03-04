@@ -1,30 +1,17 @@
-import path from 'node:path'
-import express from 'express'
-import cors from 'cors'
-import createError from 'http-errors'
+import Grpc from 'grpc'
+import httpServer from './app'
 import { service, env } from './config'
-import { isDev } from './utils'
-import reportCardRouter from './api/reportCard.router'
+import { grpcServer } from './grpc'
 
-const app = express()
-app.use(cors())
-app.use(express.static(path.join(__dirname, 'static')))
-app.use('/api/v1', reportCardRouter)
-app.use((_req, _res, next) => next(createError(404)))
-app.use((err, _req, res, _next) => {
-    const message = err.message
-    const status = err.status ?? 500
-    res.status(status)
-    if (isDev()) {
-        res.json({
-            message,
-            err
-        })
+grpcServer.bindAsync(`${service.grpc.host}:${service.grpc.port}`, Grpc.ServerCredentials.createInsecure(), (err) => {
+    if (err) {
+        console.error('grpc server error', err)
         return
     }
 
-    res.json({ message: 'An error has occurred' })
+    console.log('grpc server running on port:' + service.grpc.port)
 })
+httpServer.listen(service.http.port, () => console.log('http server running on port:' + service.http.port))
+grpcServer.start()
 
-app.listen(service.http.port, () => console.log('service port:' + service.http.port))
 console.log('service env:', env)

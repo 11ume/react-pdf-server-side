@@ -8,6 +8,7 @@ export const service = {
         port: parseInt(process.env.HTTP_PORT) || 3000
     },
     grpc: {
+        host: '0.0.0.0',
         port: parseInt(process.env.GRPC_PORT) || 50051
     },
 }
