@@ -25,8 +25,8 @@ const ReportCardBody = ({ className = '', subjects }) => {
                     </View>
                 </View>
                 <View style={styles.tableBodyContainer}>
-                    {subjects.map(({ name, periods }, key) => {
-                        const [first, second, third] = periods
+                    {subjects.map(({ name, calcifications }, key) => {
+                        const [first, second, third] = calcifications
                         const total = Math.round((first + second + third) / 3)
                         return (
                             <View style={styles.tableBodyWrapper} key={key}>

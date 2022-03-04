@@ -4,9 +4,9 @@ class ReportCardHandlers {
     }
 
     GeneratePdf({ request }, callback) {
-        const { activities } = request
+        const { data } = request
         this.events
-            .GeneratePdf(activities)
+            .GeneratePdf(data)
             .then(() => callback(null, { status: { code: 0 } }))
             .catch((err) => {
                 const message = 'Something went wrong'

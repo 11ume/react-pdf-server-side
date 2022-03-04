@@ -8,15 +8,41 @@ service EventService {
     rpc GeneratePdf (GeneratePdfRequest) returns (GeneratePdfReply) {}
 }
 
-message UpcomingActivity {
-    uint32 id = 1;
-    string start_time = 2;
-    string end_time = 3;
-    string title = 4;
+message Organization {
+    string name = 1; 
+    string formalName = 2; 
+    string logo = 3;
+}
+
+message TeacherIdentification {
+    string type string = 1;
+    string number uint32 = 3;
+}
+
+message Teacher {
+    string name = 1;
+    string last_name = 2;  
+    TeacherIdentification identification = 3;
+}
+
+message Classroom {
+    string name = 1;
+}
+
+message Subject {
+    string name = 1;
+    repeated calcifications uint32 = 2;
+}
+
+message Data {
+    Organization organization = 1;
+    Classroom classroom = 2;
+    Teacher teacher = 3;
+    repeated Subject subject = 4;
 }
 
 message GeneratePdfRequest {
-    UpcomingActivity activities = 1;
+    Data data = 1;
 }
 
 message GeneratePdfReply {

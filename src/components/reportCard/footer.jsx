@@ -13,7 +13,7 @@ const ReportCardFooter = ({ className = '', signatures }) => {
                     </View>
                     <View style={styles.signatureLine} />
                     <View style={styles.signatureLabel}>
-                        <Text>{`${signatures.teacher.name} - Directora`}</Text>
+                        <Text>{`${signatures.teacher.name} - Directivo`}</Text>
                     </View>
                 </View>
                 <View style={styles.signatureWrapper}>
