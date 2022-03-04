@@ -37,7 +37,7 @@ export const subjects = [{
     periods: [6, 7, 8]
 },
 {
-    name: 'Pensamiento crítico',
+    name: 'Ecología y medio ambiente',
     periods: [8, 10, 7]
 },
 {
