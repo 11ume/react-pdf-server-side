@@ -9,6 +9,15 @@ export const service = {
     },
     grpc: {
         port: parseInt(process.env.GRPC_PORT) || 50051
+    },
+}
+
+export const pdf = {
+    fonts: {
+        family: 'DM Sans',
+        regular: {
+            src: `http://localhost:${service.http.port}/fonts/DM_Sans/DMSans-Regular.ttf`
+        }
     }
 }
 

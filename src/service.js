@@ -1,15 +1,15 @@
 import path from 'node:path'
 import express from 'express'
-import createError from 'http-errors'
 import cors from 'cors'
-import reportCardRouter from './api/reportCard.router'
+import createError from 'http-errors'
 import { service, env } from './config'
 import { isDev } from './utils'
+import reportCardRouter from './api/reportCard.router'
 
 const app = express()
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'static')))
-app.use('api/v1', reportCardRouter)
+app.use('/api/v1', reportCardRouter)
 app.use((_req, _res, next) => next(createError(404)))
 app.use((err, _req, res, _next) => {
     const message = err.message

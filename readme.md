@@ -1,14 +1,8 @@
-Start the service for generate PDFs files on the fly with React.
+## Service for generate pdf files using React pdf 
 
-```bash
-npm run start
-```
+<br>
 
-<br/>
+[React pdf](https://react-pdf.org)
 
-
-Start client side rendering with webpack and hot reload.
-
-```bash
-npm run dev
-```
+* Generate pdf files via http endpoint
+/api/v1/report_card

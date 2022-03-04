@@ -1,4 +1,5 @@
 import React from 'react'
+import createError from 'http-errors'
 import { renderToStream } from '@react-pdf/renderer'
 import ReportCard from '../components/reportCard'
 import { subjects } from '../mocks/subjects.mock'
@@ -16,4 +17,4 @@ export const renderReportCard = (_req, res, next) => renderToStream(<ReportCard
         res.set('Content-Type', 'application/pdf')
         reader.pipe(res)
     })
-    .catch(next)
+    .catch((err) => next(createError(500, err)))
