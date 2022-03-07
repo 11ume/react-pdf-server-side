@@ -1,12 +1,14 @@
 import path from 'node:path'
 import express from 'express'
+import bodyParser from 'body-parser'
 import cors from 'cors'
 import createError from 'http-errors'
 import { isDev } from './utils'
-import reportCardRouter from './api/reportCard.router'
+import reportCardRouter from './api/reportCard/reportCard.router'
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'static')))
 app.use('/api/v1', reportCardRouter)
 app.use((_req, _res, next) => next(createError(404)))
