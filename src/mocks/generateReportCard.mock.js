@@ -1,8 +1,8 @@
 export default {
     organization: {
-        name: "Hello",
-        formal_name: "Hello",
-        logo: "Hello"
+        name: "Escuela de Jornada Simple N° 12 de 12, Provincia del Chaco",
+        formal_name: "Nuevo colegio del San Sarasa",
+        logo_url: "https://media.istockphoto.com/vectors/education-symbol-design-template-pencil-and-book-icon-stylized-vector-id1171617683?k=20&m=1171617683&s=612x612&w=0&h=E2wEAH0mQ2j-MT_i0sHj_6OUWoJKlD-3Pt7_Y8WhzD0="
     },
     institution: {
         level: "Primario",
@@ -19,10 +19,10 @@ export default {
         division: 'B',
         shift: 'TM'
     },
-    pricipal: {
+    principal: {
         name: "Cristina",
         last_name: "Gomez",
-        signature_url: "https://media.istockphoto.com/vectors/education-symbol-design-template-pencil-and-book-icon-stylized-vector-id1171617683?k=20&m=1171617683&s=612x612&w=0&h=E2wEAH0mQ2j-MT_i0sHj_6OUWoJKlD-3Pt7_Y8WhzD0=",
+        signature_url: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Chris_Hemsworth_Signature.png",
     },
     student: {
         name: "Macarena",
@@ -32,7 +32,7 @@ export default {
             number: 34235364
         }
     },
-    subject: [{
+    subjects: [{
         name: 'Matemática',
         calcifications: [3, 6, 8]
     },

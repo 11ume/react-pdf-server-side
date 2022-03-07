@@ -2,16 +2,16 @@ import React from 'react'
 import createError from 'http-errors'
 import { renderToStream } from '@react-pdf/renderer'
 import ReportCard from '../components/reportCard'
-import { subjects } from '../mocks/subjects.mock'
-import { signatures } from '../mocks/signatures.mock'
-import { organization, principal, student } from '../mocks/organization.mock'
+import reportCardPayload from '../mocks/generateReportCard.mock'
+const { organization, institution, classroom, principal, student, subjects } = reportCardPayload
 
 export const renderReportCard = (_req, res, next) => renderToStream(<ReportCard
     principal={principal}
     student={student}
     subjects={subjects}
-    signatures={signatures}
     organization={organization}
+    institution={institution}
+    classroom={classroom}
 />)
     .then((reader) => {
         res.set('Content-Type', 'application/pdf')

@@ -16,7 +16,7 @@ message Identification {
 message Organization {
     string name = 1; 
     string formal_name = 2; 
-    string logo = 3;
+    string logo_url = 3;
 }
 
 message Institution {
@@ -26,7 +26,7 @@ message Institution {
 	repeated string periods = 4 [packed = true];                                 
 }
 
-message Pricipal {
+message Principal {
     string name = 1;
     string last_name = 2;  
     string signature_url = 3;
@@ -53,7 +53,7 @@ message GenerateReportCardRequest {
     Organization organization = 1;
     Institution institution = 2; 
     Classroom classroom = 3;
-    Pricipal pricipal = 4;
+    Principal principal = 4;
     Student student = 5;
     repeated Subject subjects = 6 [packed = true];
     // AttitudinalScores
@@ -62,6 +62,7 @@ message GenerateReportCardRequest {
 
 message GenerateReportCardReply {
     Status status = 1;
+    report_card_url = 2;
 }
 
 message Status {

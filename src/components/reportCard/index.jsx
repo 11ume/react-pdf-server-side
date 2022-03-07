@@ -30,9 +30,10 @@ Font.register({
 const ReportCard = ({
     principal,
     student,
-    organization,
-    signatures,
     subjects,
+    organization,
+    institution,
+    classroom,
     limit = 9 }) => {
     // max subjects limit supported per A4 page
     const subjectLimit = subjects.length <= limit
@@ -43,27 +44,34 @@ const ReportCard = ({
                 ? (
                     <Page size={pageSize} style={styles.page}>
                         <ReportCardHeader
+                            organization={organization}
                             principal={principal}
                             student={student}
-                            organization={organization}
+                            institution={institution}
+                            classroom={classroom}
                         />
                         <ReportCardBody subjects={subjects} />
-                        <ReportCardFooter signatures={signatures} />
+                        <ReportCardFooter principal={principal} />
                     </Page>
                 ) : (
                     <>
                         <Page size={pageSize} style={styles.page}>
                             <ReportCardHeader
+                                organization={organization}
                                 principal={principal}
                                 student={student}
-                                organization={organization}
+                                institution={institution}
+                                classroom={classroom}
                             />
                             <ReportCardBody subjects={subjects.slice(0, limit)} />
-                            <ReportCardFooter signatures={signatures} />
+                            <ReportCardFooter principal={principal} />
                         </Page>
                         <Page size={pageSize} style={styles.page}>
-                            <ReportCardBody className={{ marginTop: 40 }} subjects={subjects.slice(limit, subjects.length)} />
-                            <ReportCardFooter signatures={signatures} />
+                            <ReportCardBody
+                                className={{ marginTop: 40 }}
+                                subjects={subjects.slice(limit, subjects.length)}
+                            />
+                            <ReportCardFooter principal={principal} />
                         </Page>
                     </>
                 )}
