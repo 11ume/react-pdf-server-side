@@ -11,7 +11,7 @@
         "student": "Estudiante",
         "tutor": "tutor"
     },
-    "teacher": {
+    "principal": {
         "role": "Directivo",
         "role_male": "Director",
         "role_female": "Directora"

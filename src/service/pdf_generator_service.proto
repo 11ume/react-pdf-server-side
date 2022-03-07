@@ -1,0 +1,88 @@
+syntax = "proto3";
+// option go_package = "services/connector;connector";
+
+package pdf.generator;
+import "google/protobuf/any.proto";
+
+service PdfService {
+    rpc GenerateReportCard (GenerateReportCardRequest) returns (GenerateReportCardReply) {}
+}
+
+message Identification {
+    string type = 1;
+    uint32 number = 2;
+}
+
+message Organization {
+    string name = 1; 
+    string formal_name = 2; 
+    string logo_url = 3;
+}
+
+message Institution {
+    string level = 1;         
+	uint32 order = 2;            
+	uint32 academic_period = 3;
+	repeated string periods = 4 [packed = true];                                 
+}
+
+message Principal {
+    string name = 1;
+    string last_name = 2;  
+    string signature_url = 3;
+}
+
+message Student {
+    string name = 1;
+    string last_name = 2;  
+    Identification identification = 3;
+}
+
+message Classroom {
+    uint32 grade = 1; 
+    string division = 2; 
+    string shift = 3;
+}
+
+message Subject {
+    string name = 1;
+    repeated uint32 scores = 2;
+}
+
+message ReportCardFile {
+    string name = 1;
+    string description = 2;
+}
+
+message GenerateReportCardRequest {
+    Organization organization = 1;
+    Institution institution = 2; 
+    Classroom classroom = 3;
+    Principal principal = 4;
+    Student student = 5;
+    ReportCardFile report_card_file = 7;
+    repeated Subject subjects = 6 [packed = true];
+    // AttitudinalScores
+	// CompetenceScores
+}
+
+message GenerateReportCardReply {
+    Status status = 1;
+    string report_card_url = 2;
+}
+
+message Status {
+    // The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+    int32 code = 1;
+
+    // A developer-facing error message, which should be in English. Any
+    // user-facing error message should be localized and sent in the
+    // [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+    string message = 2;
+
+    // A list of messages that carry the error details.  There is a common set of
+    // message types for APIs to use.
+    repeated google.protobuf.Any details = 3;
+}
+
+

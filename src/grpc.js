@@ -1,10 +1,9 @@
 import Grpc from 'grpc'
 import * as protoLoader from '@grpc/proto-loader'
-import ReportCardHandlers from './service/handlers/reportCard'
-import Events from './actors/events'
+import { generateReportCardHandler } from './service/handlers/pdfGeneratorHandlers'
 
 const packageDefinition = protoLoader.loadSync(
-    './src/service/events.proto',
+    './src/service/pdf_generator_service.proto',
     {
         longs: String,
         enums: String,
@@ -12,11 +11,11 @@ const packageDefinition = protoLoader.loadSync(
         oneofs: true
     })
 
-export const eventsProto = Grpc.loadPackageDefinition(packageDefinition)
+export const PdfService = Grpc.loadPackageDefinition(packageDefinition)
 export const grpcServer = new Grpc.Server()
 
-const events = new Events()
-const { EventService } = eventsProto.pdfGenerator.events
-grpcServer.addService(EventService.service, new ReportCardHandlers(events))
+grpcServer.addService(PdfService.pdf.generator.PdfService.service, {
+    generateReportCard: generateReportCardHandler
+})
 
 
