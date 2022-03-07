@@ -5,7 +5,7 @@ import { styles } from './styles'
 // TODO add i18n
 const ReportCardHeader = ({
     className = '',
-    teacher,
+    principal,
     student,
     organization }) => {
     return (
@@ -23,11 +23,11 @@ const ReportCardHeader = ({
                 <View style={styles.classroomContainer}>
                     <View style={styles.classroomLabelContainerFirst}>
                         <Text style={styles.headerLabel}>Nombre:</Text>
-                        <Text style={styles.headerContent}>{teacher.name}</Text>
+                        <Text style={styles.headerContent}>{principal.name}</Text>
                     </View>
                     <View style={styles.classroomLabelContainer}>
-                        <Text style={styles.headerLabel}>{`${teacher.identification.type}`}:</Text>
-                        <Text style={styles.headerContent}>{teacher.identification.number}</Text>
+                        <Text style={styles.headerLabel}>{`${principal.identification.type}`}:</Text>
+                        <Text style={styles.headerContent}>{principal.identification.number}</Text>
                     </View>
                     <View style={styles.classroomLabelContainer}>
                         <Text style={styles.headerLabel}>Curso:</Text>

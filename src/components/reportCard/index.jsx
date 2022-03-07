@@ -28,7 +28,7 @@ Font.register({
 // })
 
 const ReportCard = ({
-    teacher,
+    principal,
     student,
     organization,
     signatures,
@@ -43,7 +43,7 @@ const ReportCard = ({
                 ? (
                     <Page size={pageSize} style={styles.page}>
                         <ReportCardHeader
-                            teacher={teacher}
+                            principal={principal}
                             student={student}
                             organization={organization}
                         />
@@ -54,7 +54,7 @@ const ReportCard = ({
                     <>
                         <Page size={pageSize} style={styles.page}>
                             <ReportCardHeader
-                                teacher={teacher}
+                                principal={principal}
                                 student={student}
                                 organization={organization}
                             />

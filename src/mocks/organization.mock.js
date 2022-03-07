@@ -4,9 +4,8 @@ export const organization = {
     src: 'https://media.istockphoto.com/vectors/education-symbol-design-template-pencil-and-book-icon-stylized-vector-id1171617683?k=20&m=1171617683&s=612x612&w=0&h=E2wEAH0mQ2j-MT_i0sHj_6OUWoJKlD-3Pt7_Y8WhzD0='
 }
 
-export const teacher = {
+export const principal = {
     name: 'Macarena Gonzalez Cazón Macarrón Suprabond',
-    genders: 'female',
     identification: {
         type: 'DNI',
         number: '49527895'
@@ -15,7 +14,7 @@ export const teacher = {
 
 export const student = {
     level: 'Primario',
-    academicYear: '2021',
+    academicYear: '2021', // academic_period
     classroom: {
         name: '5° B TM',
         order: '5'

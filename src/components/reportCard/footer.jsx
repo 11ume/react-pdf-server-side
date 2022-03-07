@@ -9,11 +9,11 @@ const ReportCardFooter = ({ className = '', signatures }) => {
             <View style={styles.signatureContainer}>
                 <View style={styles.signatureWrapper}>
                     <View style={styles.signatureImage}>
-                        <Image source={signatures.teacher.src} />
+                        <Image source={signatures.principal.src} />
                     </View>
                     <View style={styles.signatureLine} />
                     <View style={styles.signatureLabel}>
-                        <Text>{`${signatures.teacher.name} - Directivo`}</Text>
+                        <Text>{`${signatures.principal.name} - Directivo`}</Text>
                     </View>
                 </View>
                 <View style={styles.signatureWrapper}>

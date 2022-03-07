@@ -1,12 +1,13 @@
-class ReportCardHandlers {
+class PdfGeneratorHandlers {
     constructor(events) {
         this.events = events
     }
 
-    GeneratePdf({ request }, callback) {
+    // TODO handle errors
+    GenerateReportCard({ request }, callback) {
         const { data } = request
         this.events
-            .GeneratePdf(data)
+            .GenerateReportCard(data)
             .then(() => callback(null, { status: { code: 0 } }))
             .catch((err) => {
                 const message = 'Something went wrong'
@@ -23,4 +24,4 @@ class ReportCardHandlers {
     }
 }
 
-export default ReportCardHandlers
+export default PdfGeneratorHandlers
