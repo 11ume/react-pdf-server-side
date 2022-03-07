@@ -46,7 +46,12 @@ message Classroom {
 
 message Subject {
     string name = 1;
-    repeated uint32 calcifications = 2;
+    repeated uint32 scores = 2;
+}
+
+message ReportCardFile {
+    string name = 1;
+    string description = 2;
 }
 
 message GenerateReportCardRequest {
@@ -55,6 +60,7 @@ message GenerateReportCardRequest {
     Classroom classroom = 3;
     Principal principal = 4;
     Student student = 5;
+    ReportCardFile report_card_file = 7;
     repeated Subject subjects = 6 [packed = true];
     // AttitudinalScores
 	// CompetenceScores
@@ -62,7 +68,7 @@ message GenerateReportCardRequest {
 
 message GenerateReportCardReply {
     Status status = 1;
-    report_card_url = 2;
+    string report_card_url = 2;
 }
 
 message Status {
